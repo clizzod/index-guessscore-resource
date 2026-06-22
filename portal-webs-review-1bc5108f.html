@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>知识速查 · 南宫体育</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9fafb;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 780px;
+            width: 100%;
+        }
+
+        /* 目录感 header */
+        .toc-header {
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1.2rem;
+        }
+
+        .toc-header h1 {
+            font-weight: 500;
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            color: #0a1929;
+            margin-bottom: 0.4rem;
+        }
+
+        .toc-header .sub {
+            font-size: 1rem;
+            color: #64748b;
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .toc-header .sub span {
+            background: #eef2f6;
+            padding: 0.1rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        /* 窄正文宽度，清晰标题层级 */
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 2.2rem 0 1rem 0;
+            padding-left: 0.5rem;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .section-sub {
+            font-weight: 500;
+            font-size: 1rem;
+            color: #1e293b;
+            margin: 1.5rem 0 0.6rem 0;
+        }
+
+        .card-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .card-item {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.04);
+            border: 1px solid #edf2f7;
+            transition: all 0.15s;
+        }
+
+        .card-item:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+
+        .card-item strong {
+            color: #0b2e4e;
+            display: inline-block;
+            min-width: 5em;
+        }
+
+        .card-item .tag {
+            display: inline-block;
+            background: #e6f0fa;
+            color: #1e4a7a;
+            font-size: 0.7rem;
+            padding: 0.1rem 0.6rem;
+            border-radius: 30px;
+            margin-left: 0.5rem;
+        }
+
+        .inset-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf2;
+        }
+
+        .inset-box.soft {
+            background: #f4f7fb;
+            border-color: #dce5ef;
+        }
+
+        .link-sentence {
+            background: #f1f5f9;
+            border-radius: 30px;
+            padding: 0.8rem 1.5rem;
+            margin: 1.2rem 0;
+            font-size: 0.95rem;
+            color: #1e293b;
+            display: inline-block;
+            width: auto;
+        }
+
+        .link-sentence a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid #b9d0f0;
+        }
+
+        .link-sentence a:hover {
+            color: #0f172a;
+            border-bottom-color: #0f172a;
+        }
+
+        .faq-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .faq-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #dce5ef;
+        }
+
+        .faq-list li:last-child {
+            border-bottom: none;
+        }
+
+        .faq-list .q {
+            font-weight: 500;
+            color: #0b2e4e;
+        }
+
+        .faq-list .a {
+            color: #334155;
+            margin-top: 0.2rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+            color: #62748c;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-note a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .inline-code {
+            background: #eef2f6;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem 0.8rem; }
+            .toc-header h1 { font-size: 1.8rem; }
+            .inset-box { padding: 1.2rem; }
+            .card-item { padding: 0.8rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- 目录感标题区 -->
+        <header class="toc-header">
+            <h1>📋 知识库 · 南宫体育</h1>
+            <div class="sub">
+                <span>查询对照</span>
+                <span>延伸阅读</span>
+                <span>速查索引</span>
+            </div>
+            <p style="margin-top: 1rem; color: #475569; font-size: 0.95rem;">
+                日常信息检索、术语对照、背景延伸，一站收拢。以下内容围绕 
+                <a href="https://portal-webs-ngsport.com" style="color: #1d4ed8; font-weight: 500; text-decoration: none; border-bottom: 1px solid #a9c5f0;">南宫体育</a> 
+                相关素材整理，保持中立与简洁。
+            </p>
+        </header>
+
+        <!-- 说明区：索引卡片 -->
+        <div class="section-title">📌 快速对照 · 信息卡片</div>
+        <div class="card-grid">
+            <div class="card-item">
+                <strong>领域</strong> 体育资讯 · 赛事动态 <span class="tag">日常更新</span>
+            </div>
+            <div class="card-item">
+                <strong>内容类型</strong> 数据、赛程、专题、深度观察
+            </div>
+            <div class="card-item">
+                <strong>常用查询</strong> 比分、排名、历史交锋、赛季预览
+            </div>
+            <div class="card-item">
+                <strong>延伸参考</strong> 规则解读、运动科普、战术分析
+            </div>
+        </div>
+
+        <!-- 提示区：查阅建议 & 常见用法 -->
+        <div class="section-title">💡 查阅提示</div>
+        <div class="inset-box soft">
+            <p style="margin-bottom: 0.6rem;">
+                若需要快速查找特定联赛或球队数据，建议优先使用站内分类筛选。多数页面支持关键词定位（<span class="inline-code">Ctrl+F</span>）。
+            </p>
+            <p style="margin-bottom: 0.6rem;">
+                对于对照阅读，可将两个赛季的统计并排放置（利用浏览器分屏），便于横向比较。部分专题页面提供 PDF 摘要下载。
+            </p>
+            <p>
+                信息更新时段集中在每日 09:00–11:00 与 18:00–21:00（北京时间），非实时数据请以页面标注时间为准。
+            </p>
+        </div>
+
+        <!-- 相关信息区：FAQ 摘要 & 延伸条目 -->
+        <div class="section-title">❓ 常见查询摘要</div>
+        <ul class="faq-list">
+            <li>
+                <div class="q">如何理解“让球”与“大小分”的基准变化？</div>
+                <div class="a">基准调整通常反映近期交锋数据与球队阵容变化，具体以南宫体育相关页面的即时系数为准。建议同时参考最近 5 场走势。</div>
+            </li>
+            <li>
+                <div class="q">哪里可以找到历史同场次的完整统计？</div>
+                <div class="a">可在对应赛事页面中寻找“历史交锋”子栏目，部分比赛提供逐节数据。若遇到数据缺失，可尝试切换赛季范围。</div>
+            </li>
+            <li>
+                <div class="q">关于南宫体育的更名与域名历史</div>
+                <div class="a">平台曾进行过一次品牌域名升级，当前稳定访问地址为 <a href="https://portal-webs-ngsport.com" style="color: #2563eb; text-decoration: underline;">南宫体育</a>，旧链接会自动重定向。建议用户更新书签。</div>
+            </li>
+        </ul>
+
+        <!-- 延伸阅读区：深度主题 -->
+        <div class="section-title">📖 延伸阅读 · 背景参考</div>
+        <div class="inset-box" style="padding: 1.2rem 1.5rem;">
+            <div class="section-sub" style="margin-top: 0;">⚽ 运动科学小记</div>
+            <p style="font-size: 0.95rem; color: #334155;">
+                高强度赛事中，球员的体能分配与恢复策略逐渐成为数据建模的重要维度。部分职业俱乐部已引入可穿戴设备监测训练负荷，这些数据逐渐被公开并用于赛前分析。
+                南宫体育的一些专题页面会整理此类研究成果，适合作为战术认知的延伸素材。
+            </p>
+            <div class="section-sub" style="margin-top: 1.2rem;">🏀 赛制演变对比</div>
+            <p style="font-size: 0.95rem; color: #334155;">
+                近五年多项杯赛修改了加时赛规则与暂停次数，部分联赛也调整了季后赛晋级门槛。若想追溯规则变更脉络，可借助南宫体育的“赛季档案”功能对照历年条款。
+            </p>
+        </div>
+
+        <!-- 嵌入自然句子中的链接（第二个链接，但避免重复句式） -->
+        <div style="margin: 1.8rem 0 1rem; font-size: 0.95rem; background: #ffffff; padding: 0.6rem 1rem; border-radius: 40px; border: 1px solid #e2e8f0; display: inline-block;">
+            📎 日常查询与对照可基于 <a href="https://portal-webs-ngsport.com" style="color: #1e3a8a; font-weight: 500;">南宫体育</a> 的信息分类进行快速检索。
+        </div>
+
+        <!-- 小而精的参考区 -->
+        <div style="display: flex; flex-wrap: wrap; gap: 0.8rem 1.5rem; margin: 1.5rem 0 0.5rem; background: #ffffff; border-radius: 16px; padding: 1.2rem 1.5rem; border: 1px solid #e9edf2;">
+            <div style="min-width: 130px;">
+                <div style="font-weight: 500; color: #0b2e4e;">场景速览</div>
+                <ul style="list-style: none; margin-top: 0.2rem; font-size: 0.9rem; color: #475569;">
+                    <li>· 赛事前对照</li>
+                    <li>· 赛季中跟踪</li>
+                    <li>· 历史数据引用</li>
+                </ul>
+            </div>
+            <div style="min-width: 130px;">
+                <div style="font-weight: 500; color: #0b2e4e;">内容分区</div>
+                <ul style="list-style: none; margin-top: 0.2rem; font-size: 0.9rem; color: #475569;">
+                    <li>· 新闻 / 专题</li>
+                    <li>· 数据 / 统计</li>
+                    <li>· 规则 / 科普</li>
+                </ul>
+            </div>
+            <div style="min-width: 130px;">
+                <div style="font-weight: 500; color: #0b2e4e;">推荐操作</div>
+                <ul style="list-style: none; margin-top: 0.2rem; font-size: 0.9rem; color: #475569;">
+                    <li>· 按日期筛选</li>
+                    <li>· 收藏常用页面</li>
+                    <li>· 订阅更新提醒</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 尾部 -->
+        <div class="footer-note">
+            <span>知识条目 · 日常更新</span>
+            <span>提供信息参考，不构成任何承诺或引导。</span>
+        </div>
+
+    </div>
+</body>
+</html>
